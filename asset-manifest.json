@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/BlueDi/RootLogger/static/css/main.2cce8147.chunk.css",
+    "main.js": "/BlueDi/RootLogger/static/js/main.26efb0cc.chunk.js",
+    "main.js.map": "/BlueDi/RootLogger/static/js/main.26efb0cc.chunk.js.map",
+    "runtime~main.js": "/BlueDi/RootLogger/static/js/runtime~main.00e00d86.js",
+    "runtime~main.js.map": "/BlueDi/RootLogger/static/js/runtime~main.00e00d86.js.map",
+    "static/css/2.24d3351b.chunk.css": "/BlueDi/RootLogger/static/css/2.24d3351b.chunk.css",
+    "static/js/2.c645cfe8.chunk.js": "/BlueDi/RootLogger/static/js/2.c645cfe8.chunk.js",
+    "static/js/2.c645cfe8.chunk.js.map": "/BlueDi/RootLogger/static/js/2.c645cfe8.chunk.js.map",
+    "index.html": "/BlueDi/RootLogger/index.html",
+    "precache-manifest.d32dcbd905c0058ea98cab00035bf6b7.js": "/BlueDi/RootLogger/precache-manifest.d32dcbd905c0058ea98cab00035bf6b7.js",
+    "service-worker.js": "/BlueDi/RootLogger/service-worker.js",
+    "static/css/2.24d3351b.chunk.css.map": "/BlueDi/RootLogger/static/css/2.24d3351b.chunk.css.map",
+    "static/css/main.2cce8147.chunk.css.map": "/BlueDi/RootLogger/static/css/main.2cce8147.chunk.css.map",
+    "static/media/semantic.min.css": "/BlueDi/RootLogger/static/media/outline-icons.ef60a4f6.woff"
+  }
+}
