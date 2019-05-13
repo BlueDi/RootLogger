@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/BlueDi/RootLogger/precache-manifest.37cbedcb2246a2f2344702486b55973b.js"
+  "/BlueDi/RootLogger/precache-manifest.4386804274b826606909f572890ffb9e.js"
 );
 
 self.addEventListener('message', (event) => {
