@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Container, Dropdown} from "semantic-ui-react";
+import {Form} from "semantic-ui-react";
 
 const factionsOptions = [
   {key: "mc", value: "mc", text: "Marquise de Cat"},
@@ -35,8 +35,8 @@ class RootForm extends Component {
     const {played_factions, winner} = this.state;
 
     return (
-      <Container>
-        <Dropdown
+      <Form>
+        <Form.Dropdown
           fluid
           selection
           multiple
@@ -47,7 +47,7 @@ class RootForm extends Component {
           onChange={this.handleChangeFactions}
           onSearchChange={this.handleSearchChange}
         />
-        <Dropdown
+        <Form.Dropdown
           fluid
           selection
           search
@@ -57,7 +57,8 @@ class RootForm extends Component {
           onChange={this.handleWinner}
           onSearchChange={this.handleSearchChange}
         />
-      </Container>
+        <Form.Button type="submit">Submit</Form.Button>
+      </Form>
     );
   }
 }
