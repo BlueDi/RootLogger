@@ -1,14 +1,17 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import "semantic-ui-css/semantic.min.css";
+import RootIntro from "./RootIntro";
 import RootForm from "./RootForm";
+import { Container } from "semantic-ui-react";
 
 function App() {
-  return (<div className="App">
-    <img src={logo} className="App-logo" alt="logo"/>
-    <RootForm/>
-  </div>);
+  return (
+    <Container>
+      <RootIntro />
+      <RootForm />
+    </Container>
+  );
 }
 
 export default App;

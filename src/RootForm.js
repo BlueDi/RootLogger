@@ -1,12 +1,5 @@
 import React, {Component} from "react";
-import {
-  Button,
-  Container,
-  Divider,
-  Dropdown,
-  Grid,
-  Header
-} from "semantic-ui-react";
+import {Container, Dropdown} from "semantic-ui-react";
 
 const factionsOptions = [
   {key: "mc", value: "mc", text: "Marquise de Cat"},
