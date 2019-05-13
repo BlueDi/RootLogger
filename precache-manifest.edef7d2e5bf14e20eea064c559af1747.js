@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1182b82679d389cf3ed0178f6e8ccb7d",
+    "revision": "77a54df51fa968ec6b72ffed36306376",
     "url": "/BlueDi/RootLogger/index.html"
   },
   {
