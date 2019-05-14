@@ -10,7 +10,7 @@ class RootIntro extends Component {
         size="medium"
         src="https://cf.geekdo-images.com/imagepage/img/RhpM7ioEqBhBuSOwMpN5Vcqcztk=/fit-in/900x600/filters:no_upscale()/pic3791326.jpg"
       />,
-      <RootMenu />
+      <RootMenu game={this.props.game} onSelectGame={this.props.onSelectGame} />
     ];
   }
 }
