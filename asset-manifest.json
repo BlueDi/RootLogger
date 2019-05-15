@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/RootLogger/static/js/main.a94133ed.chunk.js",
-    "main.js.map": "/RootLogger/static/js/main.a94133ed.chunk.js.map",
+    "main.js": "/RootLogger/static/js/main.b8cffe94.chunk.js",
+    "main.js.map": "/RootLogger/static/js/main.b8cffe94.chunk.js.map",
     "runtime~main.js": "/RootLogger/static/js/runtime~main.e716b061.js",
     "runtime~main.js.map": "/RootLogger/static/js/runtime~main.e716b061.js.map",
-    "static/js/2.8032e7a5.chunk.js": "/RootLogger/static/js/2.8032e7a5.chunk.js",
-    "static/js/2.8032e7a5.chunk.js.map": "/RootLogger/static/js/2.8032e7a5.chunk.js.map",
+    "static/js/2.639fc040.chunk.js": "/RootLogger/static/js/2.639fc040.chunk.js",
+    "static/js/2.639fc040.chunk.js.map": "/RootLogger/static/js/2.639fc040.chunk.js.map",
     "index.html": "/RootLogger/index.html",
-    "precache-manifest.65f584075c73c02c100e73000933d0db.js": "/RootLogger/precache-manifest.65f584075c73c02c100e73000933d0db.js",
+    "precache-manifest.ca5d47d35a60a9873d4f703759d5cd13.js": "/RootLogger/precache-manifest.ca5d47d35a60a9873d4f703759d5cd13.js",
     "service-worker.js": "/RootLogger/service-worker.js"
   }
 }
