@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import RootIntro from "./RootIntro";
+import RootFeed from "./RootFeed";
 import RootForm from "./RootForm";
 import { Container } from "semantic-ui-react";
 
@@ -16,6 +17,7 @@ class App extends Component {
           onSelectGame={this.handleSelectGame}
         />
         <RootForm game={this.state.selectedgame} />
+        <RootFeed />
       </Container>
     );
   }
