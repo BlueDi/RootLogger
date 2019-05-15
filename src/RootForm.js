@@ -7,7 +7,9 @@ const factionsOptions = [
   { key: "wa", value: "wa", text: "Woodland Alliance" },
   { key: "vb", value: "vb", text: "Vagabond" },
   { key: "lc", value: "lc", text: "Lizard Cult" },
-  { key: "rc", value: "rc", text: "Riverfolk Company" }
+  { key: "rc", value: "rc", text: "Riverfolk Company" },
+  { key: "cc", value: "cc", text: "Corvid Conspiracy" },
+  { key: "gc", value: "gc", text: "The Great Dutchy" }
 ];
 
 const charactersOptions = [
