@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form } from "semantic-ui-react";
+import { Form, Message } from "semantic-ui-react";
 
 const factionsOptions = [
   { key: "mc", value: "mc", text: "Marquise de Cat" },
@@ -86,61 +86,88 @@ class RootForm extends Component {
     }
   };
 
+  chooseTypeName = () => {
+    switch (this.props.game) {
+      case "root":
+        return "Factions";
+      case "vast":
+        return "Characters";
+      default:
+        return;
+    }
+  };
+
   render() {
     const { deck, map, options, played_factions, value, winner } = this.state;
+    const capitalizedGameName =
+      this.props.game[0].toUpperCase() + this.props.game.slice(1);
+    const headerMessage = `Welcome to ${capitalizedGameName} Logger!`;
+    const typeName = this.chooseTypeName();
+    const typePlaceHolder = `Select the ${typeName}`;
 
     return (
-      <Form>
-        <Form.Dropdown
-          fluid
-          selection
-          multiple
-          search
-          options={options}
-          value={played_factions}
-          placeholder="Select the Factions"
-          onChange={this.handleChangeFactions}
-          onSearchChange={this.handleSearchChange}
+      <>
+        <Message
+          attached
+          header={headerMessage}
+          content="Fill out the form below to log your play"
         />
-        <Form.Dropdown
-          fluid
-          selection
-          search
-          options={value}
-          value={winner}
-          name="winner"
-          placeholder="Select the Winner"
-          onChange={this.handleChange}
-          onSearchChange={this.handleSearchChange}
-        />
-        {this.props.game === "root" && (
-          <>
-            <Form.Dropdown
-              fluid
-              selection
-              search
-              options={rootMapOptions}
-              value={map}
-              name="map"
-              placeholder="Select the Map"
-              onChange={this.handleChange}
-              onSearchChange={this.handleSearchChange}
-            />
-            <Form.Dropdown
-              fluid
-              selection
-              search
-              options={rootDeckOptions}
-              value={deck}
-              name="deck"
-              placeholder="Select the Deck"
-              onChange={this.handleChange}
-              onSearchChange={this.handleSearchChange}
-            />
-          </>
-        )}
-        <Form.Button type="submit">Submit</Form.Button>
-      </Form>
+        <Form className="attached fluid segment">
+          <Form.Dropdown
+            label={typeName}
+            fluid
+            selection
+            multiple
+            search
+            options={options}
+            value={played_factions}
+            placeholder={typePlaceHolder}
+            onChange={this.handleChangeFactions}
+            onSearchChange={this.handleSearchChange}
+          />
+          <Form.Dropdown
+            label="Winner"
+            fluid
+            selection
+            search
+            options={value}
+            value={winner}
+            name="winner"
+            placeholder="Select the Winner"
+            onChange={this.handleChange}
+            onSearchChange={this.handleSearchChange}
+          />
+          {this.props.game === "root" && (
+            <>
+              <Form.Dropdown
+                label="Map"
+                fluid
+                selection
+                search
+                options={rootMapOptions}
+                value={map}
+                name="map"
+                placeholder="Select the Map"
+                onChange={this.handleChange}
+                onSearchChange={this.handleSearchChange}
+              />
+              <Form.Dropdown
+                label="Deck"
+                fluid
+                selection
+                search
+                options={rootDeckOptions}
+                value={deck}
+                name="deck"
+                placeholder="Select the Deck"
+                onChange={this.handleChange}
+                onSearchChange={this.handleSearchChange}
+              />
+            </>
+          )}
+          <Form.Button type="submit">Submit</Form.Button>
+        </Form>
+      </>
     );
   }
 }
