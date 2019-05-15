@@ -27,23 +27,41 @@ class RootMenu extends Component {
           target="_blank"
           content="Rules"
         />
-
-        <Menu.Item
-          name="root"
-          active={game === "root"}
-          content="Root"
-          onClick={onSelectGame}
-        />
-
-        <Menu.Item
-          name="vast"
-          active={game === "vast"}
-          content="Vast"
-          onClick={onSelectGame}
-        />
+        <MenuGame name="root" game={game} onSelectGame={onSelectGame} />
+        <MenuGame name="vast" game={game} onSelectGame={onSelectGame} />
+        <RootMenuRight />
       </Menu>
     );
   }
 }
+
+const MenuGame = ({ name, game, onSelectGame }) => {
+  const capitalizedGameName = name[0].toUpperCase() + name.slice(1);
+  return (
+    <Menu.Item
+      name={name}
+      active={game === name}
+      content={capitalizedGameName}
+      onClick={onSelectGame}
+    />
+  );
+};
+
+const RootMenuRight = () => {
+  var data =
+    "text/json;charset=utf-8," +
+    encodeURIComponent(localStorage.getItem("logged_data"));
+
+  return (
+    <Menu.Menu position="right">
+      <Menu.Item
+        as="a"
+        href={"data:" + data}
+        download="rootlogger_data.json"
+        content="Export"
+      />
+    </Menu.Menu>
+  );
+};
 
 export default RootMenu;
