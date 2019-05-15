@@ -75,7 +75,7 @@ class RootForm extends Component {
   handleSearchChange = (e, { searchQuery }) => this.setState({ searchQuery });
 
   handleSubmit = () => {
-    const state_copy = { ...this.state };
+    const state_copy = { ...this.state, game: this.props.game };
     delete state_copy.options;
     delete state_copy.searchQuery;
     delete state_copy.value;
