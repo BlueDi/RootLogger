@@ -46,12 +46,11 @@ class RootForm extends Component {
   handleWinner = (e, { value }) => this.setState({ winner: value });
   handleChangeFactions = (e, { value }) => {
     var selected_factions = [];
-    var coise = value.forEach(v => {
+    value.forEach(v => {
       const match = this.state.options.find(f => f.key === v);
       selected_factions.push(match);
       return match;
     });
-    console.log(coise);
     this.setState({ played_factions: value, value: selected_factions });
   };
   handleSearchChange = (e, { searchQuery }) => this.setState({ searchQuery });
