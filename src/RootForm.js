@@ -12,6 +12,18 @@ const factionsOptions = [
   { key: "gc", value: "gc", text: "The Great Dutchy" }
 ];
 
+const rootMapOptions = [
+  { key: "d", value: "d", text: "Default" },
+  { key: "w", value: "w", text: "Winter" },
+  { key: "m", value: "m", text: "Mountain" },
+  { key: "l", value: "l", text: "Lake" }
+];
+
+const rootDeckOptions = [
+  { key: "d", value: "d", text: "Default" },
+  { key: "ep", value: "ep", text: "Exiles & Partisans" }
+];
+
 const charactersOptions = [
   { key: "kn", value: "kn", text: "Knight" },
   { key: "pa", value: "pa", text: "Paladin" },
@@ -27,6 +39,8 @@ const charactersOptions = [
 
 class RootForm extends Component {
   state = {
+    deck: null,
+    map: null,
     options: factionsOptions,
     searchQuery: null,
     value: null,
@@ -36,6 +50,8 @@ class RootForm extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.game !== prevProps.game) {
       this.setState({
+        deck: null,
+        map: null,
         options: this.chooseOptions(),
         played_factions: [],
         searchQuery: null,
@@ -45,7 +61,7 @@ class RootForm extends Component {
     }
   }
 
-  handleWinner = (e, { value }) => this.setState({ winner: value });
+  handleChange = (e, { name, value }) => this.setState({ [name]: value });
   handleChangeFactions = (e, { value }) => {
     var selected_factions = [];
     value.forEach(v => {
@@ -71,7 +87,7 @@ class RootForm extends Component {
   };
 
   render() {
-    const { options, played_factions, value, winner } = this.state;
+    const { deck, map, options, played_factions, value, winner } = this.state;
 
     return (
       <Form>
@@ -92,10 +108,37 @@ class RootForm extends Component {
           search
           options={value}
           value={winner}
+          name="winner"
           placeholder="Select the Winner"
-          onChange={this.handleWinner}
+          onChange={this.handleChange}
           onSearchChange={this.handleSearchChange}
         />
+        {this.props.game === "root" && (
+          <>
+            <Form.Dropdown
+              fluid
+              selection
+              search
+              options={rootMapOptions}
+              value={map}
+              name="map"
+              placeholder="Select the Map"
+              onChange={this.handleChange}
+              onSearchChange={this.handleSearchChange}
+            />
+            <Form.Dropdown
+              fluid
+              selection
+              search
+              options={rootDeckOptions}
+              value={deck}
+              name="deck"
+              placeholder="Select the Deck"
+              onChange={this.handleChange}
+              onSearchChange={this.handleSearchChange}
+            />
+          </>
+        )}
         <Form.Button type="submit">Submit</Form.Button>
       </Form>
     );
