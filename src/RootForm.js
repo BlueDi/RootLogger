@@ -113,6 +113,13 @@ class RootForm extends Component {
           content="Fill out the form below to log your play"
         />
         <Form className="attached fluid segment">
+          <Form.Input
+            label="Date"
+            fluid
+            type="datetime-local"
+            name="date"
+            onChange={this.handleChange}
+          />
           <Form.Dropdown
             label={typeName}
             fluid
