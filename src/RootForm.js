@@ -39,6 +39,7 @@ const charactersOptions = [
 
 class RootForm extends Component {
   state = {
+    date: "",
     deck: null,
     map: null,
     options: factionsOptions,
@@ -73,7 +74,27 @@ class RootForm extends Component {
   };
   handleSearchChange = (e, { searchQuery }) => this.setState({ searchQuery });
 
-  toggleSearch = e => this.setState({ search: e.target.checked });
+  handleSubmit = () => {
+    const state_copy = { ...this.state };
+    delete state_copy.options;
+    delete state_copy.searchQuery;
+    delete state_copy.value;
+
+    const data_stored = JSON.parse(localStorage.getItem("logged_data")) || [];
+    data_stored.push(state_copy);
+    localStorage.setItem("logged_data", JSON.stringify(data_stored));
+
+    this.setState({
+      date: "",
+      deck: null,
+      map: null,
+      options: this.chooseOptions(),
+      played_factions: [],
+      searchQuery: null,
+      value: null,
+      winner: null
+    });
+  };
 
   chooseOptions = () => {
     switch (this.props.game) {
@@ -112,7 +133,7 @@ class RootForm extends Component {
           header={headerMessage}
           content="Fill out the form below to log your play"
         />
-        <Form className="attached fluid segment">
+        <Form className="attached fluid segment" onSubmit={this.handleSubmit}>
           <Form.Input
             label="Date"
             fluid
