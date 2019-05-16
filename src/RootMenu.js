@@ -47,6 +47,17 @@ const MenuGame = ({ name, game, onSelectGame }) => {
   );
 };
 
+function handleFileSelected(e) {
+  const reader = new FileReader();
+  reader.onload = (theFile => {
+    return function(e) {
+      localStorage.setItem("logged_data", e.target.result);
+    };
+  })(e.target.files[0]);
+
+  reader.readAsText(e.target.files[0]);
+}
+
 const RootMenuRight = () => {
   var data =
     "text/json;charset=utf-8," +
@@ -54,6 +65,15 @@ const RootMenuRight = () => {
 
   return (
     <Menu.Menu position="right">
+      <Menu.Item as="label" for="file" class="ui icon button">
+        Import
+        <input
+          type="file"
+          id="file"
+          style={{ display: "none" }}
+          onChange={handleFileSelected}
+        />
+      </Menu.Item>
       <Menu.Item
         as="a"
         href={"data:" + data}
