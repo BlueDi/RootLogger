@@ -65,7 +65,7 @@ const RootMenuRight = () => {
 
   return (
     <Menu.Menu position="right">
-      <Menu.Item as="label" for="file" class="ui icon button">
+      <Menu.Item as="label" htmlFor="file" className="ui icon button">
         Import
         <input
           type="file"
