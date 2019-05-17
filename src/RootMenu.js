@@ -17,7 +17,7 @@ class RootMenu extends Component {
   }
 
   render() {
-    const { game, onSelectGame } = this.props;
+    const { game, onSelectGame, onShowStats } = this.props;
 
     return (
       <Menu>
@@ -29,7 +29,7 @@ class RootMenu extends Component {
         />
         <MenuGame name="root" game={game} onSelectGame={onSelectGame} />
         <MenuGame name="vast" game={game} onSelectGame={onSelectGame} />
-        <RootMenuRight />
+        <MenuRight onShowStats={onShowStats} />
       </Menu>
     );
   }
@@ -58,13 +58,14 @@ function handleFileSelected(e) {
   reader.readAsText(e.target.files[0]);
 }
 
-const RootMenuRight = () => {
+const MenuRight = ({ onShowStats }) => {
   var data =
     "text/json;charset=utf-8," +
     encodeURIComponent(localStorage.getItem("logged_data"));
 
   return (
     <Menu.Menu position="right">
+      <Menu.Item content="Stats" onClick={onShowStats} />
       <Menu.Item as="label" htmlFor="file" className="ui icon button">
         Import
         <input

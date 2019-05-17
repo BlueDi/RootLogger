@@ -20,12 +20,14 @@ class RootIntro extends Component {
   }
 
   render() {
+    const { game, onSelectGame, onShowStats } = this.props;
     return [
       <Image key="logo" centered size="medium" src={this.chooseLogo()} />,
       <RootMenu
         key="menu"
-        game={this.props.game}
-        onSelectGame={this.props.onSelectGame}
+        game={game}
+        onSelectGame={onSelectGame}
+        onShowStats={onShowStats}
       />
     ];
   }
