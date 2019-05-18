@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Divider, Feed } from "semantic-ui-react";
 
 const factionsOptions = require("./staticdata_root").rootFactionsOptions;
-
 const charactersOptions = require("./staticdata_vast").vastCharactersOptions;
 
 function choosePlayers(logged_data) {
