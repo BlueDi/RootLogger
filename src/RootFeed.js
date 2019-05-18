@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Divider, Feed } from "semantic-ui-react";
+import { Divider, Feed, Modal } from "semantic-ui-react";
+import RootPlayStats from "./RootPlayStats";
 
 const factionsOptions = require("./staticdata_root").rootFactionsOptions;
 const charactersOptions = require("./staticdata_vast").vastCharactersOptions;
@@ -22,7 +23,7 @@ function winner(logged_data) {
   return typeof searchWinner == "undefined" ? { text: "No one" } : searchWinner;
 }
 
-const Event = ({ logged_data }) => {
+const Event = ({ logged_data, onClick }) => {
   const playedFactionsLength =
     typeof logged_data.played_factions == "undefined"
       ? "."
@@ -37,13 +38,39 @@ const Event = ({ logged_data }) => {
   const days_elapsed = Math.floor(time_elapsed / 1000 / 60 / 60 / 24);
 
   return (
-    <Feed.Event>
+    <Feed.Event onClick={onClick}>
       <Feed.Content>
         <Feed.Summary content={message} date={days_elapsed + " days ago"} />
       </Feed.Content>
     </Feed.Event>
   );
 };
+
+class GameSessionModal extends Component {
+  state = {
+    [this.props.index]: false
+  };
+
+  handleOpen = () => {
+    this.setState({ [this.props.index]: true });
+  };
+
+  handleClose = () => {
+    this.setState({ [this.props.index]: false });
+  };
+
+  render() {
+    return (
+      <Modal
+        trigger={
+          <Event logged_data={this.props.session} onClick={this.handleOpen} />
+        }
+      >
+        <RootPlayStats session={this.props.session} />
+      </Modal>
+    );
+  }
+}
 
 class RootFeed extends Component {
   state = {
@@ -60,8 +87,8 @@ class RootFeed extends Component {
       <>
         {divider}
         <Feed>
-          {this.state.data.map((play, index) => (
-            <Event key={index} logged_data={play} />
+          {this.state.data.map((session, index) => (
+            <GameSessionModal key={index} index={index} session={session} />
           ))}
         </Feed>
       </>
