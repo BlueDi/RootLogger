@@ -9,7 +9,7 @@ const rootFactionsOptions = [
   { key: "wa", value: "wa", text: "Woodland Alliance", color: "60B657" },
   { key: "vb", value: "vb", text: "Vagabond", color: "8A8987" },
   { key: "lc", value: "lc", text: "Lizard Cult", color: "F4EF6F" },
-  { key: "rc", value: "rc", text: "Riverfolk Company", color: "#FFF59D" },
+  { key: "rc", value: "rc", text: "Riverfolk Company", color: "FFF59D" },
   { key: "cc", value: "cc", text: "Corvid Conspiracy", color: "56489F" },
   { key: "gc", value: "gc", text: "The Great Dutchy", color: "CA8245" }
 ];

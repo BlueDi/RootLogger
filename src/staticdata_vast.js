@@ -5,8 +5,8 @@ const vastRulesLink =
   "https://boardgamegeek.com/filepage/136381/rules-summaries-and-one-pagers";
 
 const vastCharactersOptions = [
-  { key: "kn", value: "kn", text: "Knight", color: "#DDAB28" },
-  { key: "pa", value: "pa", text: "Paladin", color: "#997E19" },
+  { key: "kn", value: "kn", text: "Knight", color: "DDAB28" },
+  { key: "pa", value: "pa", text: "Paladin", color: "997E19" },
   { key: "gb", value: "gb", text: "Goblins", color: "6FBF4B" },
   { key: "sk", value: "sk", text: "Skeletons", color: "0A4721" },
   { key: "dg", value: "dg", text: "Dragon", color: "CF202E" },
