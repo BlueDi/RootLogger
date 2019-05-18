@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Statistic } from "semantic-ui-react";
-import { VictoryContainer, VictoryPie } from "victory";
+import { VictoryPie } from "victory";
 
 const factionsOptions = require("./staticdata_root").rootFactionsOptions;
 const charactersOptions = require("./staticdata_vast").vastCharactersOptions;

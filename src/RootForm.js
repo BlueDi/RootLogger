@@ -14,6 +14,7 @@ class RootForm extends Component {
     deck: null,
     map: null,
     options: factionsOptions,
+    points: [],
     searchQuery: null,
     value: null,
     winner: null
@@ -26,6 +27,7 @@ class RootForm extends Component {
         map: null,
         options: this.chooseOptions(),
         played_factions: [],
+        points: [],
         searchQuery: null,
         value: null,
         winner: null
@@ -43,6 +45,8 @@ class RootForm extends Component {
     });
     this.setState({ played_factions: value, value: selected_factions });
   };
+  handleChangePoints = (e, { name, value }) =>
+    this.setState({ points: { ...this.state.points, [name]: value } });
   handleSearchChange = (e, { searchQuery }) => this.setState({ searchQuery });
 
   handleSubmit = () => {
@@ -90,12 +94,54 @@ class RootForm extends Component {
   };
 
   render() {
-    const { deck, map, options, played_factions, value, winner } = this.state;
+    const {
+      deck,
+      map,
+      options,
+      points,
+      played_factions,
+      value,
+      winner
+    } = this.state;
     const capitalizedGameName =
       this.props.game[0].toUpperCase() + this.props.game.slice(1);
     const headerMessage = `Welcome to ${capitalizedGameName} Logger!`;
     const typeName = this.chooseTypeName();
     const typePlaceHolder = `Select the ${typeName}`;
+
+    var root_components = this.props.game === "root" && (
+      <>
+        <RootPoints
+          handleChangePoints={this.handleChangePoints}
+          points={points}
+          value={value}
+        />
+        <Form.Dropdown
+          label="Map"
+          fluid
+          selection
+          search
+          options={rootMapOptions}
+          value={map}
+          name="map"
+          placeholder="Select the Map"
+          onChange={this.handleChange}
+          onSearchChange={this.handleSearchChange}
+        />
+        <Form.Dropdown
+          label="Deck"
+          fluid
+          selection
+          search
+          options={rootDeckOptions}
+          value={deck}
+          name="deck"
+          placeholder="Select the Deck"
+          onChange={this.handleChange}
+          onSearchChange={this.handleSearchChange}
+        />
+      </>
+    );
 
     return (
       <>
@@ -136,37 +182,35 @@ class RootForm extends Component {
             onChange={this.handleChange}
             onSearchChange={this.handleSearchChange}
           />
-          {this.props.game === "root" && (
-            <>
-              <Form.Dropdown
-                label="Map"
-                fluid
-                selection
-                search
-                options={rootMapOptions}
-                value={map}
-                name="map"
-                placeholder="Select the Map"
-                onChange={this.handleChange}
-                onSearchChange={this.handleSearchChange}
-              />
-              <Form.Dropdown
-                label="Deck"
-                fluid
-                selection
-                search
-                options={rootDeckOptions}
-                value={deck}
-                name="deck"
-                placeholder="Select the Deck"
-                onChange={this.handleChange}
-                onSearchChange={this.handleSearchChange}
-              />
-            </>
-          )}
+          {root_components}
           <Form.Button type="submit">Submit</Form.Button>
         </Form>
       </>
+    );
+  }
+}
+
+class RootPoints extends Component {
+  render() {
+    const { handleChangePoints, points, value } = this.props;
+    return (
+      value && (
+        <Form.Group widths="equal">
+          {value.map(faction => (
+            <Form.Input
+              key={faction.value}
+              label={`${faction.text} Points`}
+              type="number"
+              min="0"
+              max="30"
+              value={points[faction.value]}
+              name={faction.value}
+              placeholder={`${faction.text} Points`}
+              onChange={handleChangePoints}
+            />
+          ))}
+        </Form.Group>
+      )
     );
   }
 }
