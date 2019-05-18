@@ -128,14 +128,22 @@ class StatsMaxMin extends Component {
     return (
       <Statistic.Group widths="2">
         <Statistic>
-          <Statistic.Value>{max.y}</Statistic.Value>
-          <Statistic.Value text>{max.x}</Statistic.Value>
+          <Statistic.Value style={{ color: `#${max.fill}` }}>
+            {max.y}
+          </Statistic.Value>
+          <Statistic.Value style={{ color: `#${max.fill}` }} text>
+            {max.x}
+          </Statistic.Value>
           <Statistic.Label>Most Wins</Statistic.Label>
         </Statistic>
 
         <Statistic>
-          <Statistic.Value>{min.y}</Statistic.Value>
-          <Statistic.Value text>{min.x}</Statistic.Value>
+          <Statistic.Value style={{ color: `#${min.fill}` }}>
+            {min.y}
+          </Statistic.Value>
+          <Statistic.Value style={{ color: `#${min.fill}` }} text>
+            {min.x}
+          </Statistic.Value>
           <Statistic.Label>Least Wins</Statistic.Label>
         </Statistic>
       </Statistic.Group>
