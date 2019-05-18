@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import { Image } from "semantic-ui-react";
 import RootMenu from "./RootMenu";
 
-const rootLogo =
-  "https://cf.geekdo-images.com/imagepage/img/RhpM7ioEqBhBuSOwMpN5Vcqcztk=/fit-in/900x600/filters:no_upscale()/pic3791326.jpg";
-const vastLogo =
-  "https://cf.geekdo-images.com/imagepage/img/d_-BA8wyApUR45GfQFcAKYulbOU=/fit-in/900x600/filters:no_upscale()/pic2962290.jpg";
+const rootLogo = require("./staticdata_root").rootLogo;
+const vastLogo = require("./staticdata_vast").vastLogo;
 
 class RootIntro extends Component {
   chooseLogo() {

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Menu } from "semantic-ui-react";
 
-const rootRulesLink = "http://root.livingrules.io/";
-const vastRulesLink =
-  "https://boardgamegeek.com/filepage/136381/rules-summaries-and-one-pagers";
+const rootRulesLink = require("./staticdata_root").rootRulesLink;
+const vastRulesLink = require("./staticdata_vast").vastRulesLink;
 
 class RootMenu extends Component {
   chooseRulesLink() {

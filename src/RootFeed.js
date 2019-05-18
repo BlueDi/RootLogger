@@ -1,29 +1,9 @@
 import React, { Component } from "react";
 import { Divider, Feed } from "semantic-ui-react";
 
-const factionsOptions = [
-  { key: "mc", value: "mc", text: "Marquise de Cat" },
-  { key: "ed", value: "ed", text: "Eyrie Dynasties" },
-  { key: "wa", value: "wa", text: "Woodland Alliance" },
-  { key: "vb", value: "vb", text: "Vagabond" },
-  { key: "lc", value: "lc", text: "Lizard Cult" },
-  { key: "rc", value: "rc", text: "Riverfolk Company" },
-  { key: "cc", value: "cc", text: "Corvid Conspiracy" },
-  { key: "gc", value: "gc", text: "The Great Dutchy" }
-];
+const factionsOptions = require("./staticdata_root").rootFactionsOptions;
 
-const charactersOptions = [
-  { key: "kn", value: "kn", text: "Knight" },
-  { key: "pa", value: "pa", text: "Paladin" },
-  { key: "gb", value: "gb", text: "Goblins" },
-  { key: "sk", value: "sk", text: "Skeletons" },
-  { key: "dg", value: "dg", text: "Dragon" },
-  { key: "sp", value: "sp", text: "Spider" },
-  { key: "cv", value: "cv", text: "Cave" },
-  { key: "mn", value: "mn", text: "Manor" },
-  { key: "tf", value: "tf", text: "Thief" },
-  { key: "ec", value: "ec", text: "Enchanter" }
-];
+const charactersOptions = require("./staticdata_vast").vastCharactersOptions;
 
 function choosePlayers(logged_data) {
   switch (logged_data.game) {

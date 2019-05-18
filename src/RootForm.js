@@ -1,41 +1,12 @@
 import React, { Component } from "react";
 import { Form, Message } from "semantic-ui-react";
 
-const factionsOptions = [
-  { key: "mc", value: "mc", text: "Marquise de Cat" },
-  { key: "ed", value: "ed", text: "Eyrie Dynasties" },
-  { key: "wa", value: "wa", text: "Woodland Alliance" },
-  { key: "vb", value: "vb", text: "Vagabond" },
-  { key: "lc", value: "lc", text: "Lizard Cult" },
-  { key: "rc", value: "rc", text: "Riverfolk Company" },
-  { key: "cc", value: "cc", text: "Corvid Conspiracy" },
-  { key: "gc", value: "gc", text: "The Great Dutchy" }
-];
-
-const rootMapOptions = [
-  { key: "d", value: "d", text: "Default" },
-  { key: "w", value: "w", text: "Winter" },
-  { key: "m", value: "m", text: "Mountain" },
-  { key: "l", value: "l", text: "Lake" }
-];
-
-const rootDeckOptions = [
-  { key: "d", value: "d", text: "Default" },
-  { key: "ep", value: "ep", text: "Exiles & Partisans" }
-];
-
-const charactersOptions = [
-  { key: "kn", value: "kn", text: "Knight" },
-  { key: "pa", value: "pa", text: "Paladin" },
-  { key: "gb", value: "gb", text: "Goblins" },
-  { key: "sk", value: "sk", text: "Skeletons" },
-  { key: "dg", value: "dg", text: "Dragon" },
-  { key: "sp", value: "sp", text: "Spider" },
-  { key: "cv", value: "cv", text: "Cave" },
-  { key: "mn", value: "mn", text: "Manor" },
-  { key: "tf", value: "tf", text: "Thief" },
-  { key: "ec", value: "ec", text: "Enchanter" }
-];
+const root_data = require("./staticdata_root");
+const factionsOptions = root_data.rootFactionsOptions;
+const rootMapOptions = root_data.rootMapOptions;
+const rootDeckOptions = root_data.rootDeckOptions;
+const vast_data = require("./staticdata_vast");
+const charactersOptions = vast_data.vastCharactersOptions;
 
 class RootForm extends Component {
   state = {
