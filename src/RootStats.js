@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Statistic } from "semantic-ui-react";
 import { VictoryContainer, VictoryPie } from "victory";
 
 const factionsOptions = [
@@ -84,21 +85,60 @@ class RootStats extends Component {
   ];
 
   render() {
+    const winners = this.countWinners();
     return (
-      <VictoryPie
-        width={550}
-        containerComponent={<VictoryContainer />}
-        data={this.countWinners()}
-        events={[
-          {
-            target: "data",
-            eventHandlers: {
-              onClick: this.handleClick
+      <>
+        <StatsMaxMin data={winners} />
+        <VictoryPie
+          width={550}
+          containerComponent={<VictoryContainer />}
+          data={winners}
+          events={[
+            {
+              target: "data",
+              eventHandlers: {
+                onClick: this.handleClick
+              }
             }
-          }
-        ]}
-        style={{ data: { fill: d => d.fill } }}
-      />
+          ]}
+          style={{ data: { fill: d => d.fill } }}
+        />
+      </>
+    );
+  }
+}
+
+class StatsMaxMin extends Component {
+  findMaxValue(array) {
+    return Math.max.apply(Math, array.map(o => o.y));
+  }
+
+  findMinValue(array) {
+    return Math.min.apply(Math, array.map(o => o.y));
+  }
+
+  findElementWithValue(array, value) {
+    return array.find(o => o.y === value);
+  }
+
+  render() {
+    const { data } = this.props;
+    const max = this.findElementWithValue(data, this.findMaxValue(data));
+    const min = this.findElementWithValue(data, this.findMinValue(data));
+    return (
+      <Statistic.Group widths="2">
+        <Statistic>
+          <Statistic.Value>{max.y}</Statistic.Value>
+          <Statistic.Value text>{max.x}</Statistic.Value>
+          <Statistic.Label>Most Wins</Statistic.Label>
+        </Statistic>
+
+        <Statistic>
+          <Statistic.Value>{min.y}</Statistic.Value>
+          <Statistic.Value text>{min.x}</Statistic.Value>
+          <Statistic.Label>Least Wins</Statistic.Label>
+        </Statistic>
+      </Statistic.Group>
     );
   }
 }
