@@ -10,7 +10,7 @@ const rootFactionsOptions = [
     text: "Marquise de Cat",
     color: "EC7A21",
     image:
-      "https://cf.geekdo-images.com/imagepage/img/KkrOnMj2krs7XaPPd5weq5nrYQY=/fit-in/900x600/filters:no_upscale()/pic3788394.png"
+      "https://ledergames.com/w/wp-content/uploads/2019/03/The-Marquise-de-Cat.png"
   },
   {
     key: "ed",
@@ -18,7 +18,7 @@ const rootFactionsOptions = [
     text: "Eyrie Dynasties",
     color: "26447D",
     image:
-      "https://cf.geekdo-images.com/imagepage/img/84glI1C5Z_yXisQJALJ_ftvvhzQ=/fit-in/900x600/filters:no_upscale()/pic3788405.png"
+      "https://ledergames.com/w/wp-content/uploads/2019/03/The-Eyrie-Dynasties.png"
   },
   {
     key: "wa",
@@ -26,7 +26,7 @@ const rootFactionsOptions = [
     text: "Woodland Alliance",
     color: "60B657",
     image:
-      "https://cf.geekdo-images.com/imagepage/img/WSBhrqmmKb-t3sqF3qdj1Yuevbg=/fit-in/900x600/filters:no_upscale()/pic3788399.png"
+      "https://ledergames.com/w/wp-content/uploads/2019/03/The-Woodland-Alliance.png"
   },
   {
     key: "vb",
@@ -34,19 +34,37 @@ const rootFactionsOptions = [
     text: "Vagabond",
     color: "8A8987",
     image:
-      "https://cf.geekdo-images.com/imagepage/img/RwmJcHLUFIxng3Gnt3tFwgyQRdU=/fit-in/900x600/filters:no_upscale()/pic3810244.jpg"
+      "https://ledergames.com/w/wp-content/uploads/2019/03/The-Vagabond.png"
   },
-  {key: "lc", value: "lc", text: "Lizard Cult", color: "F4EF6F"},
+  {
+    key: "lc",
+    value: "lc",
+    text: "Lizard Cult",
+    color: "F4EF6F",
+    image: "https://ledergames.com/w/wp-content/uploads/2019/03/Lizard-Cult.jpg"
+  },
   {
     key: "rc",
     value: "rc",
     text: "Riverfolk Company",
     color: "FFF59D",
     image:
-      "https://cf.geekdo-images.com/imagepage/img/UqYn0sh1qa15H7gJ5WunbjKkd4g=/fit-in/900x600/filters:no_upscale()/pic3816227.jpg"
+      "https://ledergames.com/w/wp-content/uploads/2019/03/Riverfolk-Company.jpg"
   },
-  {key: "cc", value: "cc", text: "Corvid Conspiracy", color: "56489F"},
-  {key: "gc", value: "gc", text: "The Great Dutchy", color: "CA8245"}
+  {
+    key: "cc",
+    value: "cc",
+    text: "Corvid Conspiracy",
+    color: "56489F",
+    image: "https://ledergames.com/w/wp-content/uploads/2019/03/Crow.jpg"
+  },
+  {
+    key: "gc",
+    value: "gc",
+    text: "The Great Dutchy",
+    color: "CA8245",
+    image: "https://ledergames.com/w/wp-content/uploads/2019/03/Mole.jpg"
+  }
 ];
 
 const rootMapOptions = [
