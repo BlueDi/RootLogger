@@ -12,7 +12,7 @@ class RootPoints extends Component {
     this.prepareRows(1);
   }
 
-  handleChange = (e, { name, value }) => {
+  handleChangeNumberOfTurns = (e, { name, value }) => {
     value = Number(value);
     this.prepareRows(value);
     this.setState({ [name]: value });
@@ -21,19 +21,24 @@ class RootPoints extends Component {
   onToggle = () => {
     this.setState(
       prevState => ({
-        checked: !prevState.checked
+        checked: !prevState.checked,
+        number_of_turns: 1
       }),
       this.prepareRows(this.state.number_of_turns)
     );
   };
 
   onGridRowsUpdated = ({ fromRow, toRow, updated }) => {
-    if (!isNaN(Object.values(updated)[0])) {
-      const rows = this.state.rows.slice();
+    var number = Object.values(updated)[0];
+    if (!isNaN(number)) {
+      const { handleChange, points } = this.props;
+      const rows = points.slice();
+      number = number > 30 ? "30" : "" + number < 0 ? "0" : "" + number;
+      updated[Object.keys(updated)[0]] = number;
       for (let i = fromRow; i <= toRow; i++) {
         rows[i] = { ...rows[i], ...updated };
       }
-      this.setState({ rows: rows });
+      handleChange({}, { name: "points", value: rows });
     }
   };
 
@@ -42,7 +47,7 @@ class RootPoints extends Component {
     if (value != null) {
       value.forEach(player => {
         player.name = player.text;
-        player.editable = true;
+        player.editable = "true";
       });
     }
     return value;
@@ -51,22 +56,22 @@ class RootPoints extends Component {
   prepareRows = number_of_turns => {
     var rows = [];
     var keys = {};
-    var { value } = this.props;
+    var { handleChange, value } = this.props;
     if (value != null) {
       value.forEach(player => (keys[player.key] = 0));
     }
     for (var i = 0; i < number_of_turns; i++) {
       rows.push({ turn: i + 1, ...keys });
     }
-    this.setState({ rows: rows });
+    handleChange({}, { name: "points", value: rows });
   };
 
   render() {
-    const { checked, number_of_turns, rows } = this.state;
+    const { checked, number_of_turns } = this.state;
     const { handleChangePoints, points } = this.props;
 
     var value = this.prepareValue();
-    console.log(number_of_turns, 35 * (number_of_turns + 1));
+
     return (
       value && (
         <>
@@ -85,7 +90,7 @@ class RootPoints extends Component {
                 name="number_of_turns"
                 value={number_of_turns}
                 placeholder="1"
-                onChange={this.handleChange}
+                onChange={this.handleChangeNumberOfTurns}
               />
             )}
           </Form.Group>
@@ -93,7 +98,7 @@ class RootPoints extends Component {
             <Form.Field>
               <ReactDataGrid
                 columns={[{ key: "turn", name: "Turn" }, ...value]}
-                rowGetter={i => rows[i]}
+                rowGetter={i => points[i]}
                 rowsCount={number_of_turns}
                 minHeight={35 * (number_of_turns + 1)}
                 onGridRowsUpdated={this.onGridRowsUpdated}

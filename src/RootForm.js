@@ -113,6 +113,7 @@ class RootForm extends Component {
     var root_components = this.props.game === "root" && (
       <>
         <RootPoints
+          handleChange={this.handleChange}
           handleChangePoints={this.handleChangePoints}
           points={points}
           value={value}
