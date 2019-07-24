@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { Image, Modal } from "semantic-ui-react";
-import { VictoryAxis, VictoryBar, VictoryChart, VictoryLine } from "victory";
+import {
+  VictoryAxis,
+  VictoryBar,
+  VictoryChart,
+  VictoryLabel,
+  VictoryLine
+} from "victory";
 
 const factionsOptions = require("./staticdata_root").rootFactionsOptions;
 
@@ -40,6 +46,23 @@ class RootPlayStats extends Component {
 }
 
 class TurnsScoreGraph extends Component {
+  createLabels() {
+    const { session } = this.props;
+    const factions = session.played_factions;
+    var label_data = [];
+    factions.forEach((key, i) => {
+      const index = factionsOptions.findIndex(f => f.value === key);
+      const faction = factionsOptions[index];
+      label_data.push({
+        key: i,
+        y: 10 + i * 20,
+        text: faction.text,
+        fill: `#${faction.color}`
+      });
+    });
+    return label_data;
+  }
+
   transformPoints() {
     const { session } = this.props;
     const points = session.points[0];
@@ -58,8 +81,17 @@ class TurnsScoreGraph extends Component {
 
   render() {
     const session_dataset = this.transformPoints();
+    const label_data = this.createLabels();
     return (
       <VictoryChart domainPadding={{ x: 20 }}>
+        {label_data.map(faction => (
+          <VictoryLabel
+            x={60}
+            y={faction.y}
+            text={faction.text}
+            style={{ fill: faction.fill }}
+          />
+        ))}
         <VictoryAxis
           style={{
             grid: { stroke: "#B3E5FC", strokeWidth: 0.25 }
@@ -69,8 +101,6 @@ class TurnsScoreGraph extends Component {
         <VictoryAxis
           style={{
             tickLabels: {
-              padding: 1,
-              angle: 10,
               verticalAnchor: "middle",
               textAnchor: "start"
             }
