@@ -24,7 +24,7 @@ class RootPoints extends Component {
         checked: !prevState.checked,
         number_of_turns: 1
       }),
-      this.prepareRows(this.state.number_of_turns)
+      this.prepareRows(1)
     );
   };
 
@@ -114,7 +114,7 @@ class RootPoints extends Component {
                   type="number"
                   min="0"
                   max="30"
-                  value={points[faction.value]}
+                  value={points[0][faction.value]}
                   name={faction.value}
                   placeholder={`${faction.text} Points`}
                   onChange={handleChangePoints}

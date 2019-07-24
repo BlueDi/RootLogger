@@ -47,7 +47,7 @@ class RootForm extends Component {
     this.setState({ played_factions: value, value: selected_factions });
   };
   handleChangePoints = (e, { name, value }) =>
-    this.setState({ points: { ...this.state.points, [name]: value } });
+    this.setState({ points: [{ ...this.state.points[0], [name]: value }] });
   handleSearchChange = (e, { searchQuery }) => this.setState({ searchQuery });
 
   handleSubmit = () => {
