@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, Message } from "semantic-ui-react";
+import RootPoints from "./RootPoints";
 
 const root_data = require("./staticdata_root");
 const factionsOptions = root_data.rootFactionsOptions;
@@ -186,31 +187,6 @@ class RootForm extends Component {
           <Form.Button type="submit">Submit</Form.Button>
         </Form>
       </>
-    );
-  }
-}
-
-class RootPoints extends Component {
-  render() {
-    const { handleChangePoints, points, value } = this.props;
-    return (
-      value && (
-        <Form.Group widths="equal">
-          {value.map(faction => (
-            <Form.Input
-              key={faction.value}
-              label={`${faction.text} Points`}
-              type="number"
-              min="0"
-              max="30"
-              value={points[faction.value]}
-              name={faction.value}
-              placeholder={`${faction.text} Points`}
-              onChange={handleChangePoints}
-            />
-          ))}
-        </Form.Group>
-      )
     );
   }
 }
