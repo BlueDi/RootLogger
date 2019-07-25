@@ -5,7 +5,9 @@ import {
   VictoryBar,
   VictoryChart,
   VictoryLabel,
-  VictoryLine
+  VictoryLine,
+  VictoryTooltip,
+  VictoryVoronoiContainer
 } from "victory";
 
 const factionsOptions = require("./staticdata_root").rootFactionsOptions;
@@ -71,7 +73,11 @@ class TurnsScoreGraph extends Component {
         const index = factionsOptions.findIndex(f => f.value === key);
         const faction = factionsOptions[index];
         return session.points.map((turn, index) => {
-          return { x: index + 1, y: turn[key], stroke: `#${faction.color}` };
+          return {
+            x: index + 1,
+            y: Number(turn[key]),
+            color: `#${faction.color}`
+          };
         });
       } else {
         return null;
@@ -83,43 +89,45 @@ class TurnsScoreGraph extends Component {
     const session_dataset = this.transformPoints();
     const label_data = this.createLabels();
     return (
-      <VictoryChart domainPadding={{ x: 20 }}>
+      <VictoryChart
+        containerComponent={
+          <VictoryVoronoiContainer
+            voronoiDimension="x"
+            labels={d => `y: ${d.y}`}
+            labelComponent={
+              <VictoryTooltip
+                cornerRadius={0}
+                flyoutStyle={{ fill: "white" }}
+              />
+            }
+          />
+        }
+      >
         {label_data.map(faction => (
           <VictoryLabel
+            key={faction.text}
             x={60}
             y={faction.y}
             text={faction.text}
             style={{ fill: faction.fill }}
           />
         ))}
-        <VictoryAxis
-          style={{
-            grid: { stroke: "#B3E5FC", strokeWidth: 0.25 }
-          }}
-          dependentAxis
-        />
-        <VictoryAxis
-          style={{
-            tickLabels: {
-              verticalAnchor: "middle",
-              textAnchor: "start"
-            }
-          }}
-        />
         {session_dataset.map((player_points, index) => {
-          if (player_points != null)
+          if (player_points != null) {
+            const color = player_points[0].color || "black";
             return (
               <VictoryLine
                 key={index}
                 data={player_points}
+                domain={{ y: [0, 30] }}
                 animate
-                alignment="start"
                 style={{
-                  data: { stroke: d => d[0].stroke }
+                  data: { stroke: color },
+                  labels: { fill: color }
                 }}
               />
             );
-          else return null;
+          } else return null;
         })}
       </VictoryChart>
     );
