@@ -11,7 +11,7 @@ const vastCharactersOptions = [
     text: "Knight",
     color: "DDAB28",
     image:
-      "https://ksr-ugc.imgix.net/assets/021/712/588/5afafec7a55bb8a72c427e24fed6e21e_original.png?w=700&fit=max&auto=format&lossless=true&s=bf9b88ae0c7896ec20efc6e8bf66df0a"
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzU3jrdXB5EVP540NLcz1N0-Y5fOUIdYEy5MeFvtrwyXaOLqcP"
   },
   {
     key: "pa",
