@@ -13,6 +13,7 @@ class RootForm extends Component {
   state = {
     date: "",
     deck: null,
+    domination: false,
     map: null,
     options: factionsOptions,
     points: [],
@@ -25,6 +26,7 @@ class RootForm extends Component {
     if (this.props.game !== prevProps.game) {
       this.setState({
         deck: null,
+        domination: false,
         map: null,
         options: this.chooseOptions(),
         played_factions: [],
@@ -63,6 +65,7 @@ class RootForm extends Component {
     this.setState({
       date: "",
       deck: null,
+      domination: false,
       map: null,
       options: this.chooseOptions(),
       played_factions: [],
@@ -97,6 +100,7 @@ class RootForm extends Component {
   render() {
     const {
       deck,
+      domination,
       map,
       options,
       points,
@@ -115,6 +119,7 @@ class RootForm extends Component {
         <RootPoints
           handleChange={this.handleChange}
           handleChangePoints={this.handleChangePoints}
+          domination={domination}
           points={points}
           value={value}
         />

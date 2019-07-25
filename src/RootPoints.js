@@ -18,10 +18,10 @@ class RootPoints extends Component {
     this.setState({ [name]: value });
   };
 
-  onToggle = () => {
+  onToggle = (e, { name }) => {
     this.setState(
       prevState => ({
-        checked: !prevState.checked,
+        [name]: !prevState[name],
         number_of_turns: 1
       }),
       this.prepareRows(1)
@@ -68,17 +68,26 @@ class RootPoints extends Component {
 
   render() {
     const { checked, number_of_turns } = this.state;
-    const { handleChangePoints, points } = this.props;
+    const { domination, handleChange, handleChangePoints, points } = this.props;
 
     var value = this.prepareValue();
+    var not_domination = !domination;
 
     return (
       value && (
         <>
           <Form.Group widths="equal">
             <Form.Checkbox
-              label="Victory Points per turn"
+              label="Domination Win"
+              onChange={handleChange}
+              name="domination"
+              value={not_domination}
+              checked={domination}
+            />
+            <Form.Checkbox
+              label="Victory Points per Turn"
               onChange={this.onToggle}
+              name="checked"
               checked={checked}
             />
             {this.state.checked && (
