@@ -19,7 +19,7 @@ class RootMenu extends Component {
     const { game, onSelectGame, onShowStats } = this.props;
 
     return (
-      <Menu>
+      <Menu stackable>
         <Menu.Item
           as="a"
           href={this.chooseRulesLink()}
