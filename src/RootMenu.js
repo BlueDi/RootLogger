@@ -16,7 +16,7 @@ class RootMenu extends Component {
   }
 
   render() {
-    const { game, onSelectGame, onShowStats } = this.props;
+    const { game, onSelectGame, onShowView } = this.props;
 
     return (
       <Menu stackable>
@@ -28,7 +28,7 @@ class RootMenu extends Component {
         />
         <MenuGame name="root" game={game} onSelectGame={onSelectGame} />
         <MenuGame name="vast" game={game} onSelectGame={onSelectGame} />
-        <MenuRight onShowStats={onShowStats} />
+        <MenuRight onShowView={onShowView} />
       </Menu>
     );
   }
@@ -57,14 +57,19 @@ function handleFileSelected(e) {
   reader.readAsText(e.target.files[0]);
 }
 
-const MenuRight = ({ onShowStats }) => {
+const MenuRight = ({ onShowView }) => {
   var data =
     "text/json;charset=utf-8," +
     encodeURIComponent(localStorage.getItem("logged_data"));
 
   return (
     <Menu.Menu position="right">
-      <Menu.Item content="Stats" onClick={onShowStats} />
+      <Menu.Item
+        content="Recommendation"
+        name="recommendation"
+        onClick={onShowView}
+      />
+      <Menu.Item content="Stats" name="stats" onClick={onShowView} />
       <Menu.Item as="label" htmlFor="file" className="ui icon button">
         Import
         <input

@@ -6,27 +6,44 @@ import RootStats from "./RootStats";
 import { Container } from "semantic-ui-react";
 
 class App extends Component {
-  state = { selectedgame: "root", showStats: false };
+  state = { selectedgame: "root", view: "form" };
 
   handleSelectGame = (e, { name }) => this.setState({ selectedgame: name });
-  handleShowStats = e => this.setState({ showStats: !this.state.showStats });
+  handleShowView = (e, { name }) => {
+    const { view } = this.state;
+    view === name
+      ? this.setState({ view: "form" })
+      : this.setState({ view: name });
+  };
+
+  setContent() {
+    const { selectedgame, view } = this.state;
+    switch (view) {
+      case "stats":
+        return <RootStats game={selectedgame} />;
+      case "recommendation":
+        return <></>;
+      case "form":
+      default:
+        return (
+          <>
+            <RootForm game={selectedgame} />
+            <RootFeed />
+          </>
+        );
+    }
+  }
 
   render() {
-    var content = this.state.showStats ? (
-      <RootStats game={this.state.selectedgame} />
-    ) : (
-      <>
-        <RootForm game={this.state.selectedgame} />
-        <RootFeed />
-      </>
-    );
+    const { selectedgame } = this.state;
+    var content = this.setContent();
 
     return (
       <Container>
         <RootIntro
-          game={this.state.selectedgame}
+          game={selectedgame}
           onSelectGame={this.handleSelectGame}
-          onShowStats={this.handleShowStats}
+          onShowView={this.handleShowView}
         />
         {content}
       </Container>
