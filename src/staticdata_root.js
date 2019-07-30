@@ -9,6 +9,7 @@ const rootFactionsOptions = [
     value: "mc",
     text: "Marquise de Cat",
     color: "EC7A21",
+    colortext: "orange",
     image:
       "https://ledergames.com/w/wp-content/uploads/2019/03/The-Marquise-de-Cat.png"
   },
@@ -17,6 +18,7 @@ const rootFactionsOptions = [
     value: "ed",
     text: "Eyrie Dynasties",
     color: "26447D",
+    colortext: "blue",
     image:
       "https://ledergames.com/w/wp-content/uploads/2019/03/The-Eyrie-Dynasties.png"
   },
@@ -25,6 +27,7 @@ const rootFactionsOptions = [
     value: "wa",
     text: "Woodland Alliance",
     color: "60B657",
+    colortext: "green",
     image:
       "https://ledergames.com/w/wp-content/uploads/2019/03/The-Woodland-Alliance.png"
   },
@@ -33,6 +36,7 @@ const rootFactionsOptions = [
     value: "vb",
     text: "Vagabond",
     color: "8A8987",
+    colortext: "gray",
     image:
       "https://ledergames.com/w/wp-content/uploads/2019/03/The-Vagabond.png"
   },
@@ -41,6 +45,7 @@ const rootFactionsOptions = [
     value: "lc",
     text: "Lizard Cult",
     color: "F4EF6F",
+    colortext: "yellow",
     image: "https://ledergames.com/w/wp-content/uploads/2019/03/Lizard-Cult.jpg"
   },
   {
@@ -48,6 +53,7 @@ const rootFactionsOptions = [
     value: "rc",
     text: "Riverfolk Company",
     color: "FFF59D",
+    colortext: "teal",
     image:
       "https://ledergames.com/w/wp-content/uploads/2019/03/Riverfolk-Company.jpg"
   },
@@ -56,6 +62,7 @@ const rootFactionsOptions = [
     value: "cc",
     text: "Corvid Conspiracy",
     color: "56489F",
+    colortext: "violet",
     image: "https://ledergames.com/w/wp-content/uploads/2019/03/Crow.jpg"
   },
   {
@@ -63,6 +70,7 @@ const rootFactionsOptions = [
     value: "gc",
     text: "The Great Dutchy",
     color: "CA8245",
+    colortext: "brown",
     image: "https://ledergames.com/w/wp-content/uploads/2019/03/Mole.jpg"
   }
 ];
