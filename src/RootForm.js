@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Message } from "semantic-ui-react";
+import { Form, Message, Rating } from "semantic-ui-react";
 import RootPoints from "./RootPoints";
 
 const root_data = require("./staticdata_root");
@@ -17,6 +17,7 @@ class RootForm extends Component {
     map: null,
     options: factionsOptions,
     points: [],
+    rating: 0,
     searchQuery: null,
     value: null,
     winner: null
@@ -31,6 +32,7 @@ class RootForm extends Component {
         options: this.chooseOptions(),
         played_factions: [],
         points: [],
+        rating: 0,
         searchQuery: null,
         value: null,
         winner: null
@@ -49,11 +51,20 @@ class RootForm extends Component {
     this.setState({ played_factions: value, value: selected_factions });
   };
   handleChangePoints = (e, { name, value }) =>
-    this.setState({ points: [{ ...this.state.points[0], [name]: value }] });
+    this.setState({
+      points: [
+        {
+          ...this.state.points[0],
+          [name]: value
+        }
+      ]
+    });
   handleSearchChange = (e, { searchQuery }) => this.setState({ searchQuery });
-
   handleSubmit = () => {
-    const state_copy = { ...this.state, game: this.props.game };
+    const state_copy = {
+      ...this.state,
+      game: this.props.game
+    };
     delete state_copy.options;
     delete state_copy.searchQuery;
     delete state_copy.value;
@@ -69,11 +80,13 @@ class RootForm extends Component {
       map: null,
       options: this.chooseOptions(),
       played_factions: [],
+      rating: 0,
       searchQuery: null,
       value: null,
       winner: null
     });
   };
+  handleRate = (e, { rating }) => this.setState({ rating });
 
   chooseOptions = () => {
     switch (this.props.game) {
@@ -105,6 +118,7 @@ class RootForm extends Component {
       options,
       points,
       played_factions,
+      rating,
       value,
       winner
     } = this.state;
@@ -125,9 +139,9 @@ class RootForm extends Component {
         />
         <Form.Dropdown
           label="Map"
-          fluid
-          selection
-          search
+          fluid="fluid"
+          selection="selection"
+          search="search"
           options={rootMapOptions}
           value={map}
           name="map"
@@ -137,9 +151,9 @@ class RootForm extends Component {
         />
         <Form.Dropdown
           label="Deck"
-          fluid
-          selection
-          search
+          fluid="fluid"
+          selection="selection"
+          search="search"
           options={rootDeckOptions}
           value={deck}
           name="deck"
@@ -160,17 +174,17 @@ class RootForm extends Component {
         <Form className="attached fluid segment" onSubmit={this.handleSubmit}>
           <Form.Input
             label="Date"
-            fluid
+            fluid="fluid"
             type="datetime-local"
             name="date"
             onChange={this.handleChange}
           />
           <Form.Dropdown
             label={typeName}
-            fluid
-            selection
-            multiple
-            search
+            fluid="fluid"
+            selection="selection"
+            multiple="multiple"
+            search="search"
             options={options}
             value={played_factions}
             placeholder={typePlaceHolder}
@@ -179,9 +193,9 @@ class RootForm extends Component {
           />
           <Form.Dropdown
             label="Winner"
-            fluid
-            selection
-            search
+            fluid="fluid"
+            selection="selection"
+            search="search"
             options={value}
             value={winner}
             name="winner"
@@ -190,6 +204,14 @@ class RootForm extends Component {
             onSearchChange={this.handleSearchChange}
           />
           {root_components}
+          <Form.Input label="Rating">
+            <Rating
+              icon="star"
+              maxRating={5}
+              rating={rating}
+              onRate={this.handleRate}
+            />
+          </Form.Input>
           <Form.Button type="submit">Submit</Form.Button>
         </Form>
       </>
