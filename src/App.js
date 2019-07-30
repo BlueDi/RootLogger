@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import RootIntro from "./RootIntro";
 import RootFeed from "./RootFeed";
 import RootForm from "./RootForm";
+import RootRecommendation from "./RootRecommendation";
 import RootStats from "./RootStats";
 import { Container } from "semantic-ui-react";
 
@@ -22,7 +23,7 @@ class App extends Component {
       case "stats":
         return <RootStats game={selectedgame} />;
       case "recommendation":
-        return <></>;
+        return <RootRecommendation game={selectedgame} />;
       case "form":
       default:
         return (
