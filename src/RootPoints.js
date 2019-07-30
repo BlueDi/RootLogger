@@ -123,7 +123,7 @@ class RootPoints extends Component {
                   type="number"
                   min="0"
                   max="30"
-                  value={points[0][faction.value]}
+                  value={points.length > 0 ? points[0][faction.value] : 0}
                   name={faction.value}
                   placeholder={`${faction.text} Points`}
                   onChange={handleChangePoints}
