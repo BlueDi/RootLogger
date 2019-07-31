@@ -3,11 +3,14 @@ const rootLogo =
 
 const rootRulesLink = "http://root.livingrules.io/";
 
+const rootPlayersReach = {2: 17, 3: 18, 4: 21, 5: 25, 6: 28};
+
 const rootFactionsOptions = [
   {
     key: "mc",
     value: "mc",
     text: "Marquise de Cat",
+    reach: 10,
     color: "EC7A21",
     colortext: "orange",
     image:
@@ -17,6 +20,7 @@ const rootFactionsOptions = [
     key: "ed",
     value: "ed",
     text: "Eyrie Dynasties",
+    reach: 7,
     color: "26447D",
     colortext: "blue",
     image:
@@ -26,6 +30,7 @@ const rootFactionsOptions = [
     key: "wa",
     value: "wa",
     text: "Woodland Alliance",
+    reach: 3,
     color: "60B657",
     colortext: "green",
     image:
@@ -35,8 +40,9 @@ const rootFactionsOptions = [
     key: "vb",
     value: "vb",
     text: "Vagabond",
+    reach: 5,
     color: "8A8987",
-    colortext: "gray",
+    colortext: "grey",
     image:
       "https://ledergames.com/w/wp-content/uploads/2019/03/The-Vagabond.png"
   },
@@ -44,6 +50,7 @@ const rootFactionsOptions = [
     key: "lc",
     value: "lc",
     text: "Lizard Cult",
+    reach: 2,
     color: "F4EF6F",
     colortext: "yellow",
     image: "https://ledergames.com/w/wp-content/uploads/2019/03/Lizard-Cult.jpg"
@@ -52,6 +59,7 @@ const rootFactionsOptions = [
     key: "rc",
     value: "rc",
     text: "Riverfolk Company",
+    reach: 5,
     color: "FFF59D",
     colortext: "teal",
     image:
@@ -61,6 +69,7 @@ const rootFactionsOptions = [
     key: "cc",
     value: "cc",
     text: "Corvid Conspiracy",
+    reach: 3,
     color: "56489F",
     colortext: "violet",
     image: "https://ledergames.com/w/wp-content/uploads/2019/03/Crow.jpg"
@@ -69,6 +78,7 @@ const rootFactionsOptions = [
     key: "gc",
     value: "gc",
     text: "The Great Dutchy",
+    reach: 8,
     color: "CA8245",
     colortext: "brown",
     image: "https://ledergames.com/w/wp-content/uploads/2019/03/Mole.jpg"
@@ -89,6 +99,7 @@ const rootDeckOptions = [
 
 exports.rootLogo = rootLogo;
 exports.rootRulesLink = rootRulesLink;
+exports.rootPlayersReach = rootPlayersReach;
 exports.rootFactionsOptions = rootFactionsOptions;
 exports.rootMapOptions = rootMapOptions;
 exports.rootDeckOptions = rootDeckOptions;

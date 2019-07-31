@@ -3,10 +3,15 @@ import { Form, Icon, Message, Rating } from "semantic-ui-react";
 
 const root_data = require("./staticdata_root");
 const factionsOptions = root_data.rootFactionsOptions;
+const playersReach = root_data.rootPlayersReach;
 const vast_data = require("./staticdata_vast");
 const charactersOptions = vast_data.vastCharactersOptions;
 
 class RootRecommendationComponent extends Component {
+  state = {
+    data: JSON.parse(localStorage.getItem("logged_data")) || []
+  };
+
   chooseOptions = () => {
     switch (this.props.game) {
       case "root":
@@ -16,6 +21,44 @@ class RootRecommendationComponent extends Component {
       default:
         return;
     }
+  };
+
+  randomInReach() {
+    const { number_of_players } = this.props;
+    const options = this.chooseOptions();
+    var randoms = [];
+    while (!this.isArraySumHigher(randoms)) {
+      randoms = [];
+      while (randoms.length < number_of_players) {
+        var r = Math.floor(Math.random() * options.length);
+        if (randoms.indexOf(r) === -1) randoms.push(r);
+      }
+    }
+    return randoms;
+  }
+
+  isArraySumHigher(number_array) {
+    const { number_of_players } = this.props;
+    const options = this.chooseOptions();
+    const reach_values = [];
+    number_array.forEach(id => reach_values.push(options[id].reach || 99));
+    const sum = reach_values.reduce((a, b) => a + b, 0);
+    return sum >= playersReach[number_of_players];
+  }
+
+  multiplayerRecommendation = () => {
+    const options = this.chooseOptions();
+    var selected = [];
+    const selected_factions = this.randomInReach();
+    selected_factions.forEach(id =>
+      selected.push(
+        <Message icon key={id} color={options[id].colortext}>
+          <Icon name="user" />
+          <Message.Content>{options[id].text}</Message.Content>
+        </Message>
+      )
+    );
+    return selected;
   };
 
   render() {
@@ -39,17 +82,7 @@ class RootRecommendationComponent extends Component {
           </Message>
         );
       default:
-        const options = this.chooseOptions();
-        var selected = [];
-        for (var i = 0; i < number_of_players; i++) {
-          selected.push(
-            <Message icon key={i} color={options[i].colortext}>
-              <Icon name="user" />
-              <Message.Content>{options[i].text}</Message.Content>
-            </Message>
-          );
-        }
-        return selected;
+        return this.multiplayerRecommendation();
     }
   }
 }

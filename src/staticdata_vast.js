@@ -109,7 +109,7 @@ const vastCharactersOptions = [
     value: "tf",
     text: "Thief",
     color: "777679",
-    colortext: "gray",
+    colortext: "grey",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw_ZCZ64uW9eWhEy9TK6zeBNOwaQZYr7eIqYyr_3iuu4hwVRybiw"
   },
@@ -118,7 +118,7 @@ const vastCharactersOptions = [
     value: "ec",
     text: "Enchanter",
     color: "787A77",
-    colortext: "gray",
+    colortext: "grey",
     image:
       "https://cf.geekdo-images.com/imagepage/img/yhrgOxqxFzvF1YehogSp4wVffww=/fit-in/900x600/filters:no_upscale()/pic4151590.png"
   }
